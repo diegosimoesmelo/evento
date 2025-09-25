@@ -1,0 +1,66 @@
+CREATE TABLE estados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo VARCHAR(2) NOT NULL UNIQUE,
+    nome VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+-- Inserir todos os estados
+INSERT INTO estados (codigo, nome) VALUES
+('AC', 'Acre'),
+('AL', 'Alagoas'),
+('AP', 'Amapá'),
+('AM', 'Amazonas'),
+('BA', 'Bahia'),
+('CE', 'Ceará'),
+('DF', 'Distrito Federal'),
+('ES', 'Espírito Santo'),
+('GO', 'Goiás'),
+('MA', 'Maranhão'),
+('MT', 'Mato Grosso'),
+('MS', 'Mato Grosso do Sul'),
+('MG', 'Minas Gerais'),
+('PA', 'Pará'),
+('PB', 'Paraíba'),
+('PR', 'Paraná'),
+('PE', 'Pernambuco'),
+('PI', 'Piauí'),
+('RJ', 'Rio de Janeiro'),
+('RN', 'Rio Grande do Norte'),
+('RS', 'Rio Grande do Sul'),
+('RO', 'Rondônia'),
+('RR', 'Roraima'),
+('SC', 'Santa Catarina'),
+('SP', 'São Paulo'),
+('SE', 'Sergipe'),
+('TO', 'Tocantins');
+
+
+CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    telefone VARCHAR(20) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    endereco VARCHAR(500),
+    cidade VARCHAR(100),
+    estado VARCHAR(2),
+    cep VARCHAR(10),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+
+CREATE TABLE usuarios (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  senha_hash VARCHAR(255) NOT NULL,
+  pais VARCHAR(50) NOT NULL,
+  interesses JSON NULL, -- JSON nativo do MySQL
+  foto_path VARCHAR(255) NULL,
+  comentarios TEXT NULL,
+  created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)

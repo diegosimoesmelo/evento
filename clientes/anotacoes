@@ -1,0 +1,39 @@
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    pais VARCHAR(50) NOT NULL,
+    interesses JSON NULL,
+    foto VARCHAR(500) NULL,
+    comentarios TEXT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+
+
+CREATE TABLE tipos_produto (
+  id BIGINT  AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100) NOT NULL
+)
+INSERT INTO tipos_produto (nome) VALUES ('Eletrônico'), ('Alimento'), ('Roupas')
+
+
+CREATE TABLE IF NOT EXISTS cidades (
+  id BIGINT  AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  country_code CHAR(3) NOT NULL,
+  created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP
+)
+
+
+CREATE TABLE IF NOT EXISTS admin_users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    is_superadmin TINYINT(1) DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
